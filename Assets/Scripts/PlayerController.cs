@@ -9,10 +9,24 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public Animator myAnim;
 
+    public static PlayerController instance;
+
+    public string areaTransName;
+
     // Start is called before the first frame update
     void Start()
     {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         
+
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
